@@ -58,7 +58,7 @@ const Footer = () => {
             <h3 className="font-bold mb-4">Contact Information</h3>
             <div className="space-y-2 text-primary-foreground/80">
               <p>📧 hughesmacopolo@gmail.com</p>
-              <p>🌐 hughesmarcopoloenterprises.com</p>
+              <p>🌐 marcopoloenterprises.cc</p>
               <p>📞 +248 255 6095</p>
               <p>📍 Seychelles</p>
             </div>
