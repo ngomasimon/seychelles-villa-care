@@ -33,8 +33,8 @@ const ContactSection = () => {
     {
       icon: Globe,
       label: "Website",
-      value: "hughesmarcopoloenterprises.com",
-      href: "https://hughesmarcopoloenterprises.com"
+      value: "marcopoloenterprises.cc",
+      href: "https://marcopoloenterprises.cc"
     },
     {
       icon: Phone,
@@ -46,7 +46,7 @@ const ContactSection = () => {
       icon: MapPin,
       label: "Location",
       value: "Seychelles",
-      href: "#"
+      href: "google.com/maps/place/City+Victoria,+Mahe+island/data=!4m2!3m1!1s0x22e028547ac91869:0x62e3e07e7e6c3cde?sa=X&ved=1t:155783&ictx=111"
     }
   ];
 
