@@ -1,5 +1,4 @@
 import { CheckCircle, Users, MapPin, Calendar } from "lucide-react";
-import luxuryVillaPanoramic from "@/assets/luxury-villa-panoramic.jpg";
 
 const WhyChooseUsSection = () => {
   const benefits = [
@@ -58,32 +57,21 @@ const WhyChooseUsSection = () => {
           ))}
         </div>
 
-        <div className="mt-16">
-          <div className="glass-card rounded-2xl max-w-6xl mx-auto overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-0">
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  Ready to Experience Hassle-Free Property Management?
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Join the growing number of property owners who trust Marco Polo Enterprises 
-                  with their Seychelles investments. Let us take care of your property while you enjoy peace of mind.
-                </p>
-                <button
-                  onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-smooth shadow-soft self-start"
-                >
-                  Get Your Free Consultation
-                </button>
-              </div>
-              <div className="aspect-square lg:aspect-auto">
-                <img
-                  src={luxuryVillaPanoramic}
-                  alt="Luxury villa with panoramic ocean view in Seychelles"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
+        <div className="mt-16 text-center">
+          <div className="glass-card p-8 rounded-2xl max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-foreground mb-4">
+              Ready to Experience Hassle-Free Property Management?
+            </h3>
+            <p className="text-muted-foreground mb-6">
+              Join the growing number of property owners who trust Marco Polo Enterprises 
+              with their Seychelles investments.
+            </p>
+            <button
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+              className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-smooth shadow-soft"
+            >
+              Get Your Free Consultation
+            </button>
           </div>
         </div>
       </div>

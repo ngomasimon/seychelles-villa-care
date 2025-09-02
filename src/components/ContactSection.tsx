@@ -1,6 +1,27 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Mail, Globe, Phone, MapPin } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const { toast } = useToast();
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Simulate form submission
+    toast({
+      title: "Message Sent!",
+      description: "We'll get back to you within 24 hours.",
+    });
+    setFormData({ name: "", email: "", message: "" });
+  };
 
   const contactInfo = [
     {
@@ -12,8 +33,8 @@ const ContactSection = () => {
     {
       icon: Globe,
       label: "Website",
-      value: "marcopoloenterprises.cc",
-      href: "https://marcopoloenterprises.cc"
+      value: "hughesmarcopoloenterprises.com",
+      href: "https://hughesmarcopoloenterprises.com"
     },
     {
       icon: Phone,
@@ -42,36 +63,98 @@ const ContactSection = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="grid md:grid-cols-2 gap-8 animate-slide-up">
-            {contactInfo.map((info, index) => (
-              <a
-                key={index}
-                href={info.href}
-                className="flex items-center space-x-4 p-6 glass-card rounded-xl hover-lift transition-smooth"
-              >
-                <div className="w-16 h-16 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <info.icon className="w-8 h-8 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">{info.label}</p>
-                  <p className="font-semibold text-foreground text-lg">{info.value}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-
-          {/* Map placeholder */}
-          <div className="mt-12 glass-card p-8 rounded-xl animate-fade-in">
-            <h4 className="font-semibold text-foreground mb-6 text-center text-xl">Find Us in Paradise</h4>
-            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                <p className="text-muted-foreground text-lg">Beautiful Seychelles</p>
-                <p className="text-sm text-muted-foreground">Interactive map coming soon</p>
+          <div className="space-y-8 animate-slide-up">
+            <div>
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Contact Information
+              </h3>
+              <div className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <a
+                    key={index}
+                    href={info.href}
+                    className="flex items-center space-x-4 p-4 glass-card rounded-xl hover-lift transition-smooth"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <info.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground">{info.label}</p>
+                      <p className="font-semibold text-foreground">{info.value}</p>
+                    </div>
+                  </a>
+                ))}
               </div>
             </div>
+
+            {/* Map placeholder */}
+            <div className="glass-card p-6 rounded-xl">
+              <h4 className="font-semibold text-foreground mb-4">Find Us</h4>
+              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                <div className="text-center">
+                  <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
+                  <p className="text-muted-foreground">Seychelles Location</p>
+                  <p className="text-sm text-muted-foreground">Interactive map coming soon</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div className="animate-slide-up">
+            <form onSubmit={handleSubmit} className="glass-card p-8 rounded-2xl space-y-6">
+              <h3 className="text-2xl font-bold text-foreground mb-6">
+                Send Us a Message
+              </h3>
+              
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Your Name
+                </label>
+                <Input
+                  type="text"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  className="w-full"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Email Address
+                </label>
+                <Input
+                  type="email"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  className="w-full"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">
+                  Message
+                </label>
+                <Textarea
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  rows={6}
+                  className="w-full"
+                  placeholder="Tell us about your property management needs..."
+                />
+              </div>
+
+              <Button type="submit" variant="hero" size="lg" className="w-full">
+                Send Message
+              </Button>
+            </form>
           </div>
         </div>
       </div>
